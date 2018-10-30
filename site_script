@@ -1,0 +1,18 @@
+#! /bin/bash
+url="https://app.bitpool.com/#/login?pane=organisation"
+curl $url > Site
+var=`grep "bpoAppVersion" Site | grep -Eo "[0-9]+"`
+hh=`date "+%H"`
+mm=`date "+%M"`
+summ=$(($hh+$mm))
+echo -e "$var -Chislo site"
+echo -e "$hh - Godiny"
+echo -e "$mm - Hviliny"
+echo -e "$summ - Summa hvilyn i godyn "
+if (( "$summ" > "$var"));then
+echo -e "$summ Bilshe za chislo site: $var"
+elif (("$summ" <"$var" ));then
+echo -e "$var bilshe za summu godin i hvulyn: $summ"
+else 
+echo -e "Znachennya rivni"
+fi
